@@ -57,6 +57,9 @@ class StarSystemMapGenerator extends React.Component {
           <Editor settings={ this.state.settings } edit={ this.edit } planets={this.state.system.planets } />
         ) }
         <main>
+          <pre>
+            <code>{ JSON.stringify(this.state.system2, null, ' ') }</code>
+          </pre>
           <svg { ...props.svg }>
             <Defs { ...props.defs } />
 

@@ -12,7 +12,7 @@ const Editor = ( props ) => {
         </label>
         <label>
           <span>Spread { props.settings.spread }</span>
-          <input type="range" min="0" max="15" defaultValue={ props.settings.spread } onChange={ props.edit.spread }/>
+          <input type="range" min="0" max="20" defaultValue={ props.settings.spread } onChange={ props.edit.spread }/>
         </label>
       </div>
       { props.planets.map( ( p, pp ) => (

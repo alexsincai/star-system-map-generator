@@ -68,10 +68,15 @@ class StarSystem {
 	calcSpread() {
 		const min = this.spread * -0.5;
 		const max = min + this.spread;
-		this.planets.filter( p => !p.small ).forEach( ( g, i, a ) => {
-			const angle = util.map( i, 0, a.length - 1, min, max );
-			g.setAngle( angle );
-		} );
+		// this.planets.filter( p => !p.small ).forEach( ( g, i, a ) => {
+		// 	const angle = util.map( i, 0, a.length - 1, min, max );
+		// 	g.setAngle( angle );
+		// } );
+		this.planets.forEach( ( g, i, a ) => {
+			const angle = util.round( util.map( util.fib( i ), 1, util.fib( a.length - 1 ), min, max ) );
+			// console.log( util.fib( i ), util.fib( a.length - 1 ), min, max, angle )
+			g.setAngle( angle )
+		} )
 	}
 
 	display() {
