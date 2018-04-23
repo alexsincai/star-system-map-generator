@@ -64,7 +64,7 @@ class StarSystemMapGenerator extends React.Component {
             <use href="#star-definition" />
             <use href="#orbits" />
             <use href="#planet-definitions" />
-            <use href="#moon-orbits-front" />
+            {/* <use href="#moon-orbits-front" /> */}
           </svg>
         </main>
       </div>

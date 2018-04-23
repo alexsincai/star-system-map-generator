@@ -3,7 +3,7 @@ import React from 'react';
 import StarDef from './stardef';
 import PlanetDef from './planetdef';
 import Orbit from './orbit';
-import MoonOrbit from './moonorbit';
+// import MoonOrbit from './moonorbit';
 
 const Defs = ( props ) => {
 	const background = {
@@ -15,22 +15,22 @@ const Defs = ( props ) => {
 		id: 'background-definition'
 	};
 
-	const moons = props.planets && props.planets.filter( p => p.moons ).map( ( p, i ) => {
-		if ( !p.moons ) return null;
-		return p.moons.map( m => {
-			return {
-				parent: i,
-				angle: p.angle,
-				distance: p.distance,
-				width: m.distance,
-				height: m.distance * 0.35
-			}
-		} );
-	} ).reduce( ( a, v ) => a.concat( v ), [] ).map( ( o, i ) => {
-		o.key = i;
-		o.id = `moon-${ i }-orbit`;
-		return o;
-	} );
+	// const moons = props.planets && props.planets.filter( p => p.moons ).map( ( p, i ) => {
+	// 	if ( !p.moons ) return null;
+	// 	return p.moons.map( m => {
+	// 		return {
+	// 			parent: i,
+	// 			angle: p.angle,
+	// 			distance: p.distance,
+	// 			width: m.distance,
+	// 			height: m.distance * 0.35
+	// 		}
+	// 	} );
+	// } ).reduce( ( a, v ) => a.concat( v ), [] ).map( ( o, i ) => {
+	// 	o.key = i;
+	// 	o.id = `moon-${ i }-orbit`;
+	// 	return o;
+	// } );
 
 	const belts = props.belts.map( ( b, bb ) => {
 		return {
@@ -85,9 +85,9 @@ const Defs = ( props ) => {
       ) }
 
       <g id="orbits" fill="transparent" stroke="#202639" strokeWidth="0.125" strokeDasharray="0.25 0.5" strokeLinecap="round">
-        { moons.map( m => (
+        {/* { moons.map( m => (
           <MoonOrbit { ...m } type="back" />
-        ) ) }
+        ) ) } */}
         { belts.filter(b => b.shown).map( b => (
           <Orbit { ...b } />
         ) ) }
@@ -96,11 +96,11 @@ const Defs = ( props ) => {
         ) ) }
       </g>
 
-      <g id="moon-orbits-front" fill="transparent" stroke="#202639" strokeWidth="0.125" strokeDasharray="0.25 0.5" strokeLinecap="round">
+      {/* <g id="moon-orbits-front" fill="transparent" stroke="#202639" strokeWidth="0.125" strokeDasharray="0.25 0.5" strokeLinecap="round">
         { moons.map( m => (
           <MoonOrbit { ...m } type="front" />
         ) ) }
-      </g>
+      </g> */}
 
     </defs>
 	)

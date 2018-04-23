@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MoonDef from './moondef';
-import MoonShadow from './moonshadow';
+// import MoonDef from './moondef';
+// import MoonShadow from './moonshadow';
 
 const PlanetDef = ( props ) => {
 	const textured = {
@@ -47,24 +47,24 @@ const PlanetDef = ( props ) => {
         <use href={ `#planet-${ props.id }-body` } fill="url(#sphere)" filter="url(#displace-small)" />
       </mask>
 
-      { props.moons && (
+      {/* { props.moons && (
         <g id={ `planet-${ props.id }-moons` }>
           { props.moons.map( ( m, mm ) => (
-            <MoonDef key={ mm } id={ `planet-${ props.id }-moon-${ mm }` } { ...m } />
+        <MoonDef key={ mm } id={ `planet-${ props.id }-moon-${ mm }` } { ...m } />
           ) ) }
         </g>
-      ) }
-      { props.moons && (
+      ) } */}
+      {/* { props.moons && (
         <g id={ `planet-${ props.id }-moon-shadows` }>
           { props.moons.filter(m => m.angle && m.angle > 90 && m.angle < 200 ).map( ( m, mm ) => (
-            <MoonShadow key={ mm } id={ `planet-${ props.id }-moon-${ mm }` } offset={ props.radius * 0.125 } { ...m } />
+        <MoonShadow key={ mm } id={ `planet-${ props.id }-moon-${ mm }` } offset={ props.radius * 0.125 } { ...m } />
           ) ) }
         </g>
-      ) }
+      ) } */}
 
       <g id={ `planet-${ props.id }-definition` }>
         <g { ...transform }>
-          <use href={ `#planet-${ props.id }-moons` } />
+          {/* <use href={ `#planet-${ props.id }-moons` } /> */}
 
 
           <rect { ...textured } />
@@ -72,7 +72,7 @@ const PlanetDef = ( props ) => {
 
           <use href={ `#planet-${ props.id }-moon-shadows` } clipPath={ `url(#planet-${ props.id }-clip)` } filter="url(#blur)" />
 
-          <use href={ `#planet-${ props.id }-moons` } clipPath={ `url(#planet-${ props.id }-moon-clip)` } />
+          {/* <use href={ `#planet-${ props.id }-moons` } clipPath={ `url(#planet-${ props.id }-moon-clip)` } /> */}
         </g>
       </g>
     </g>
