@@ -6,7 +6,13 @@ const util = {
 	randArray: ( a ) => a[ Math.floor( Math.random() * a.length ) ],
 	randInt: ( min = 0, max = 1, dec = 4 ) => Math.floor( Math.random() * ( ( max * Math.pow( 10, dec ) ) - ( min * Math.pow( 10, dec ) ) + 1 ) + ( min * Math.pow( 10, dec ) ) ) / Math.pow( 10, dec ),
 	round: ( v, d = 4 ) => Math.round( v * Math.pow( 10, d ) ) / Math.pow( 10, d ),
-	a2r: ( a ) => a * Math.PI / 180,
+	// a2r: ( a ) => a * Math.PI / 180,
+	fib: ( i ) => {
+		if ( i < 0 ) return 0;
+		if ( i === 0 ) return 1;
+		if ( i === 1 ) return 2;
+		return util.fib( i - 1 ) + util.fib( i - 2 );
+	},
 	color: {
 		from: ( hmin = 0, hmax = 360, smin = 20, smax = 50, lmin = 60, lmax = 90 ) => {
 			const h = util.random( hmin, hmax, 0 );
