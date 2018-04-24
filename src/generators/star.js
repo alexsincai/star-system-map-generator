@@ -1,45 +1,32 @@
 import util from '../helpers/util';
-import Textured from './textured';
+import Body from './body';
 
-class Star extends Textured {
-	constructor( radius ) {
-		super( radius, util.map( radius, 30, 80, 4, 8 ) );
-		this.setColor();
-		this.setRays();
+class Star extends Body {
+	constructor( radius, color ) {
+		super( radius, Math.round( radius / 10 ), color );
 	}
 
-	setRadius( radius ) {
-		super.setRadius( radius );
-		super.setBandCount( util.map( radius, 30, 80, 4, 8 ) );
-		this.setColor();
-		this.setRays();
+	set radius( radius ) {
+		this._radius = radius;
+		this._bands = Math.round( radius / 10 );
+		this.texture = Math.round( radius / 10 );
 	}
 
-	setColor() {
-		const h = util.map( this.radius, 30, 80, 0, 60 );
-		super.setColor( util.color.from( h, h, 60, 90, 70, 90 ) );
+	get radius() {
+		return this._radius;
 	}
 
-	setRays() {
-		this.rays = [];
-		const count = util.round( util.map( this.radius, 30, 80, 300, 300 ), 0 );
-		for ( let i = 0; i < count; i++ ) {
-			const len = util.random( this.radius * 1.2, this.radius * 1.8, 0 );
-			let ang = util.map( i, 0, count, 0, 360 );
-			this.rays.push( {
-				key: i,
-				length: len,
-				angle: ang
-			} );
-		}
+	set rays( count ) {
+		this._rays = Array( count ).fill().map( ( _, i ) => {
+			return {
+				length: util.random( this.radius * 1.2, this.radius * 1.8 ),
+				angle: util.round( util.map( i, 0, count, 0, 360 ) )
+			};
+		} );
 	}
 
-	display() {
-		let out = super.display();
-		delete out.angle;
-		delete out.distance;
-		out.rays = this.rays;
-		return out;
+	get rays() {
+		return this._rays;
 	}
 }
 

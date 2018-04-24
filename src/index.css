@@ -1,3 +1,7 @@
+.container, aside div, label, label button, label input, label select, label span {
+	width: 100%;
+}
+
 body {
 	font: 12px/1 sans-serif;
 }
@@ -13,12 +17,11 @@ body {
 .container {
 	display: grid;
 
-	width: 100%;
 	height: 100%;
 
 	grid-gap: .5em;
 	grid-template-columns: 4fr 1fr;
-	grid-template-rows: 1em auto;
+	grid-template-rows: 2em auto;
 }
 
 .container nav {
@@ -26,7 +29,7 @@ body {
 	grid-row: 1/2;
 }
 
-.container main, .container aside {
+.container aside, .container main {
 	grid-row: 2/3;
 }
 
@@ -37,6 +40,40 @@ body {
 .container main {
 	grid-column: 1/3;
 }
+
 .container aside + main {
 	grid-column: 1/2;
+}
+
+nav button + button {
+	margin-left: 1em;
+}
+
+aside div {
+	margin-bottom: 1em;
+}
+
+aside, aside > div, label {
+	display: flex;
+}
+
+aside, aside > div {
+	flex-flow: column nowrap;
+}
+
+label {
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+label + label {
+	margin-top: 1em;
+}
+
+button, label input, label select {
+	cursor: pointer;
+}
+
+label input, label select {
+	margin-top: .5em;
 }
