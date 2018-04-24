@@ -33,6 +33,7 @@ const build = {
 			}
 		} );
 		s.settings.viewBox = build.viewBox( s.system.star.radius );
+		s.system.reangle();
 		return s;
 	},
 
@@ -77,6 +78,7 @@ const build = {
 			s.system.belts[ i ].show = false;
 			s.system.orbits[ i ].show = false;
 		}
+		s.system.reangle();
 		return s;
 	},
 

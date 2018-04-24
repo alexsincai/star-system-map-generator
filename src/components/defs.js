@@ -45,6 +45,8 @@ const Defs = ( props ) => {
 
       <rect { ...background } />
 
+      <rect id="border" x={ props.box[ 0 ] + 1 } y={ props.box[ 1 ] + 1 } width={ props.box[ 2 ] - 2 } height={ props.box[ 3 ] - 2 } fill="transparent" stroke="#adebe9" strokeWidth="0.25"></rect>
+
       <g id="orbits" fill="transparent" stroke="#adebe9" strokeWidth="0.125" strokeDasharray="0.25 0.5" strokeLinecap="round">
         { props.orbits.map( ( o, oo ) => (
           <circle key={ oo } cx="0" cy="0" r={ o.distance } />

@@ -109,6 +109,7 @@ class StarSystemMapGenerator extends React.Component {
 			        <use href="#orbits" />
 			        <use href="#star-definition" />
 			        <use href="#planet-definitions" />
+			        <use href="#border" />
 			      </g>
 			    </svg>
 			  </main>

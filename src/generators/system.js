@@ -42,7 +42,13 @@ class System {
 
 		let hab = util.random( this.planets.filter( r => r.radius < 5 ) );
 		hab.habitable = true;
+	}
 
+	reangle() {
+		this.planets.filter( p => p.show ).map( ( p, d, a ) => {
+			p.angle = util.round( util.map( util.fib( d ), 1, util.fib( a.length - 1 ), 10, -10 ) );
+			return p;
+		} );
 	}
 
 	get radius() {
