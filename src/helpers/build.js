@@ -14,6 +14,7 @@ const build = {
 
 	randomize: ( s ) => {
 		s.system.radius = util.random( 0, 100, 0 );
+		s.system.name = '';
 		s.settings.radius = s.system.radius;
 		s.system.planets.forEach( ( p, i ) => {
 			if ( Math.random() > 0.7 ) {
