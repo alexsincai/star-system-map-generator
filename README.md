@@ -6,8 +6,10 @@ Generates fantasy maps of star systems, inspired by [Page Tsou's illustrations](
 
 The results look like this:
 
-![](https://i.imgur.com/B8h8TYtl.png)
+![](https://i.imgur.com/EbaE1y0l.png)
 
-![](https://i.imgur.com/k8uhMyWl.png)
+![](https://i.imgur.com/5d5f5pXl.png)
 
-![](https://i.imgur.com/HOV7Btgl.png)
+![](https://i.imgur.com/88c9vBNl.png)
+
+![](https://i.imgur.com/3iirLlal.png)
