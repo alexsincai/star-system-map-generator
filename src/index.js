@@ -40,7 +40,7 @@ class StarSystemMapGenerator extends React.Component {
 		};
 
 		this.save = ( e ) => {
-			saveSvgAsPng( document.querySelector( 'svg' ), `star-system-${ Date.now() }.png`, {
+			saveSvgAsPng( document.querySelector( 'svg' ), `${ this.state.system.name.system.toLowerCase().replace(/ /g, '-') }.png`, {
 				left: this.state.settings.viewBox[ 0 ],
 				top: this.state.settings.viewBox[ 1 ],
 				width: this.state.settings.viewBox[ 2 ],

@@ -74,6 +74,12 @@ class Defs extends React.Component {
           <feBlend in="SourceGraphic" in2="noisy" mode="multiply" />
         </filter>
 
+        <filter id="label-blur">
+          <feOffset result="a" in="SourceAlpha" dx="0" dy="0" />
+          <feGaussianBlur result="b" in="a" stdDeviation="1" />
+          <feBlend in="SourceGraphic" in2="b" mode="normal" />
+        </filter>
+
         <radialGradient id="sphere" r="0.55" fx="0" fy="0.5">
           <stop offset="70%" stopColor="#000000" />
           <stop offset="90%" stopColor="#aaaaaa" />
@@ -111,7 +117,7 @@ class Defs extends React.Component {
 
         <StarDef { ...this.state.star } />
 
-        <g id="label" fontFamily="sans-serif" fontSize="1" fill="#adebe9">
+        <g id="label" fontFamily="sans-serif" fontSize="1" fill="#adebe9" filter="url(#label-blur)">
           <text x="0" y="0" data-order="0" fontSize="1.5" fontWeight="bold">{ this.state.name.system }</text>
           { this.state.name.orbits.map( ( o, oo ) => (
             <text key={ oo } data-order={ oo + 1 } x="0" y={ ( oo + 1 ) * 1.5 }>{ o }</text>
