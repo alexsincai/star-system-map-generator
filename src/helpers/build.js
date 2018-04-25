@@ -4,9 +4,12 @@ import System from '../generators/system';
 const build = {
 	start: ( s ) => {
 		s.system = new System( s.settings.radius );
-		// s.settings.viewBox = build.viewBox( s.system.star.radius );
-		// return s;
 		return build.randomize( s );
+	},
+
+	name: ( s, v ) => {
+		s.system.name = util.capitalize( v.trim() );
+		return s;
 	},
 
 	randomize: ( s ) => {

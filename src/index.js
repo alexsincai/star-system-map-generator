@@ -29,6 +29,7 @@ class StarSystemMapGenerator extends React.Component {
 
 		this.edit = {
 			refib: ( e ) => this.setState( build.refib( this.state ) ),
+			name: ( e ) => this.setState( build.name( this.state, e.target.value ) ),
 			radius: ( e ) => this.setState( build.radius( this.state, Number( e.target.value ) ) ),
 			planetRadius: ( e ) => this.setState( build.planetRadius( this.state, Number( e.target.dataset.id ), Number( e.target.value ) ) ),
 			showAs: ( e ) => this.setState( build.showAs( this.state, Number( e.target.dataset.id ), Number( e.target.value ) ) ),
@@ -64,11 +65,13 @@ class StarSystemMapGenerator extends React.Component {
 			editor: {
 				settings: this.state.settings,
 				edit: this.edit,
+				name: this.state.system.name.star,
 				planets: this.state.system.planets,
 				belts: this.state.system.belts
 			},
 			defs: {
 				box: this.state.settings.viewBox,
+				name: this.state.system.name,
 				star: {
 					radius: this.state.system.star.radius,
 					color: this.state.system.star.color,
@@ -110,6 +113,7 @@ class StarSystemMapGenerator extends React.Component {
 			        <use href="#star-definition" />
 			        <use href="#planet-definitions" />
 			        <use href="#border" />
+			        <use href="#label" />
 			      </g>
 			    </svg>
 			  </main>

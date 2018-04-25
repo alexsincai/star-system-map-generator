@@ -1,4 +1,6 @@
 import util from '../helpers/util';
+
+import Name from './name';
 import Star from './star';
 import Planet from './planet';
 import Belt from './belt';
@@ -7,6 +9,38 @@ import Orbit from './orbit';
 class System {
 	constructor( radius ) {
 		this.radius = radius;
+		this.name = '';
+	}
+
+	set name( name = '' ) {
+		this._name = name;
+		if ( name === '' ) this._name = new Name().name();
+	}
+
+	get name() {
+		let out = {
+			system: `The ${ this._name } System`,
+			star: this._name,
+			orbits: []
+		};
+		let count = 0;
+		if ( this.planets ) {
+			for ( let i = 0; i < this.planets.length; i++ ) {
+				if ( this.planets[ i ].show ) {
+					let name = `${ this._name } ${ util.roman( count ) }`;
+					let description = 'Gas giant';
+
+					if ( this.planets[ i ].ring.show ) description = 'Ringed gas giant';
+					if ( this.planets[ i ].small ) description = 'Rocky planet';
+					if ( this.planets[ i ].habitable ) description = 'Habitable planet';
+
+					out.orbits.push( `${ name } - ${ description }` );
+					count++;
+				}
+				if ( this.belts[ i ].show ) out.orbits.push( 'Asteroid belt' );
+			}
+		}
+		return out;
 	}
 
 	set radius( rad ) {
@@ -47,6 +81,10 @@ class System {
 	reangle() {
 		this.planets.filter( p => p.show ).map( ( p, d, a ) => {
 			p.angle = util.round( util.map( util.fib( d ), 1, util.fib( a.length - 1 ), 10, -10 ) );
+
+			if ( isNaN( p.angle ) )
+				p.angle = util.round( util.map( d, -a.length, a.length, 10, -10 ) );
+
 			return p;
 		} );
 	}

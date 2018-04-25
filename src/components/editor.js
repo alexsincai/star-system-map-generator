@@ -17,6 +17,12 @@ const Editor = ( props ) => {
       </div>
       <div>
         <label>
+          <span>System name</span>
+          <input type="text" defaultValue={ props.name } onChange={ props.edit.name }/>
+        </label>
+      </div>
+      <div>
+        <label>
           <span>Radius { props.settings.radius }</span>
           <input type="range" min="0" max="100" defaultValue={ props.settings.radius } onChange={ props.edit.radius }/>
         </label>
@@ -37,7 +43,7 @@ const Editor = ( props ) => {
           </label>
           <label>
             <span>Planet { pp + 1 } habitable: { p.habitable ? 'Yes' : 'No' }</span>
-            <input type="checkbox" checked={ p.habitable } data-id={ pp } onChange={ props.edit.habitable }/>
+            <input type="checkbox" checked={ p.show && p.habitable } data-id={ pp } onChange={ props.edit.habitable }/>
           </label>
           <label>
             <span>Planet { pp + 1 } color:</span>

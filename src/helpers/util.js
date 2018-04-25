@@ -11,6 +11,43 @@ const util = {
 		if ( i === 0 ) return 1;
 		return util.fib( i - 1 ) + util.fib( i - 2 );
 	},
+	capitalize: ( word ) => {
+		let split = word.match( /[ -]/gi );
+		let out;
+		if ( split ) {
+			for ( let i in split ) {
+				out = word.split( split[ i ] ).map( w => w.slice( 0, 1 ).toUpperCase() + w.slice( 1 ).toLowerCase() );
+				out = out.join( split[ i ] );
+			}
+		} else out = word.slice( 0, 1 ).toUpperCase() + word.slice( 1 ).toLowerCase();
+		return out;
+	},
+	roman: ( num = 0 ) => {
+		num++;
+		const lookup = {
+			m: 1000,
+			cm: 900,
+			d: 500,
+			cd: 400,
+			c: 100,
+			xc: 90,
+			l: 50,
+			xl: 40,
+			x: 10,
+			ix: 9,
+			v: 5,
+			iv: 4,
+			i: 1
+		};
+		let roman = '';
+		for ( let i in lookup ) {
+			while ( num >= lookup[ i ] ) {
+				roman += i;
+				num -= lookup[ i ];
+			}
+		}
+		return roman.toUpperCase();
+	},
 	color: {
 		from: ( hmin = 0, hmax = 360, smin = 20, smax = 50, lmin = 60, lmax = 90 ) => {
 			const h = util.random( hmin, hmax, 0 );
