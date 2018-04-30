@@ -95,7 +95,7 @@ class StarSystemMapGenerator extends React.Component {
 		};
 
 		return (
-			<div className="container">
+			<React.Fragment>
 			  <nav>
 			    <button onClick={ ( e ) => this.setState({ editing: !this.state.editing }) }>Edit</button>
           <button onClick={ this.edit.randomize }>Randomize system</button>
@@ -117,7 +117,7 @@ class StarSystemMapGenerator extends React.Component {
 			      </g>
 			    </svg>
 			  </main>
-			</div>
+      </React.Fragment>
 		);
 	}
 }
